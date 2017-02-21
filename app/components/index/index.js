@@ -6,6 +6,7 @@ import React from 'react';
 // Include any necessary components
 import Header from '../header/header';
 import Contacts from '../contacts/contacts';
+import Details from '../details/details';
 
 // Create a component based off the React component class
 export default class Index extends React.Component {
@@ -41,7 +42,7 @@ export default class Index extends React.Component {
                         <Contacts/>
                     </div>
                     <div className="col-xs-8">
-                        Contact Details
+                        <Details/>
                     </div>
                 </div>
             </div>
