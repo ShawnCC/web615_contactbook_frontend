@@ -2,29 +2,31 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
 
+// Import the action(s)
 import { setContact } from './actions';
 
 class Contact extends React.Component {
     constructor() {
         super();
 
+        // We must bind "this" from the class to the handleClick method, this
+        // will allow us to grab props, context, and whatever other properties
+        // of the parent class we need
         this.handleClick = this.handleClick.bind(this);
     }
 
     /**
-     * 
+     * Handle the click event
+     * @param {Object} e - Event object
      */
     handleClick(e) {
         e.preventDefault();
 
+        // Grab the contact from props
         const { contact } = this.props;
 
-        // this.props.dispatch(setContact({
-        //     contact
-        // }));
-
+        // Dispatch the action, passing the contact to the action
         this.context.store.dispatch(setContact({
             contact
         }));

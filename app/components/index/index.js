@@ -4,9 +4,9 @@
 import React from 'react';
 
 // Include any necessary components
-import Header from '../header/header';
-import Contacts from '../contacts/contacts';
-import Details from '../details/details';
+import Header from '../header';
+import Contacts from '../contacts';
+import Details from '../details';
 
 // Create a component based off the React component class
 export default class Index extends React.Component {

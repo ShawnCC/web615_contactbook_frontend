@@ -3,7 +3,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Contact from './contact/contact';
+import Contact from './contact';
 
 class Contacts extends React.Component {
     constructor() {
@@ -32,16 +32,23 @@ class Contacts extends React.Component {
     }
 }
 
+// Denote what props our component should be expecting, if one is missing it
+// will throw an error in the console
 Contacts.propTypes = {
     reducer: React.PropTypes.object.isRequired
 };
 
+/**
+ * This will set up the various reducers as props in our component
+ * @param {Object} state - The store for our application, contains all reducers
+ */
 function mapStateToProps(state) {
     return {
         reducer: state.contactsReducer
     };
 }
 
+// Connects our component to the store
 Contacts = connect(
     mapStateToProps
 )(Contacts)
