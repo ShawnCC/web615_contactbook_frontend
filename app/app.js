@@ -4,7 +4,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
+import createLogger from 'redux-logger';
 
 // Include root component
 import Index from './components/index';
@@ -14,7 +15,9 @@ import reducers from './reducers';
 
 // Take our reducers and run it through the createStore method, this is what we
 // will pass to the root component of our app
-let store = createStore(reducers);
+// Also we can pass in middleware to our app, we are using the redux-logger
+// middleware to keep track of what actions are taking place in our app
+let store = createStore(reducers, applyMiddleware(createLogger()));
 
 // Render our root component to the provided element
 ReactDOM.render(
