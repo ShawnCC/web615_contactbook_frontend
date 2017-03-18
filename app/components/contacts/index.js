@@ -5,9 +5,28 @@ import { connect } from 'react-redux';
 
 import Contact from './contact';
 
+import { getContacts } from './actions';
+
 class Contacts extends React.Component {
     constructor() {
         super();
+
+        this.getContacts = this.getContacts.bind(this);
+    }
+    
+    /**
+     * Dispatch action to get the contacts
+     */
+    getContacts() {
+        this.context.store.dispatch(getContacts());
+    }
+
+    /**
+     * Method built into React.Component, this is called right before the
+     * component renders for the first time
+     */
+    componentWillMount() {
+        this.getContacts();
     }
 
     render() {
@@ -36,6 +55,10 @@ class Contacts extends React.Component {
 // will throw an error in the console
 Contacts.propTypes = {
     reducer: React.PropTypes.object.isRequired
+};
+
+Contacts.contextTypes = {
+    store: React.PropTypes.object
 };
 
 /**

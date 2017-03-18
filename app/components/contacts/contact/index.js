@@ -48,7 +48,7 @@ class Contact extends React.Component {
          * Print out the properties of the contact to the list item
          */
         return (
-            <a href="#" className={ cssClasses } onClick={ this.handleClick }>{ contact.name } - { contact.phone_number }</a>
+            <a href="#" className={ cssClasses } onClick={ this.handleClick }>{ contact.name }</a>
         );
     }
 }

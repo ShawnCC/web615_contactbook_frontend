@@ -14,6 +14,8 @@ class Details extends React.Component {
         return (
             <div>
                 <p><strong>Name:</strong> { reducer.contact.name }</p>
+                <p><strong>Email:</strong> { reducer.contact.email }</p>
+                <p><strong>Phone Number:</strong> { reducer.contact.phone_number }</p>
             </div>
         );
     }

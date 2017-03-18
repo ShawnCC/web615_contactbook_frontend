@@ -5,6 +5,7 @@ import React from 'react';
 
 // Include any necessary components
 import Header from '../header';
+import Messages from '../messages';
 import Contacts from '../contacts';
 import Details from '../details';
 
@@ -36,6 +37,7 @@ export default class Index extends React.Component {
             <div className="container"> {/* Create our root element */}
                 {/* Include self closing header element */}
                 <Header/>
+                <Messages/>
                 <div className="row">
                     <div className="col-xs-4">
                         {/* Include self closing contacts element */}
