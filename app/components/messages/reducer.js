@@ -18,6 +18,18 @@ const reducer = (state = defaultState, action) => {
                 error: action.payload.error
             };
         }
+        case 'CONTACT_GET_ERROR': {
+            return {
+                ...state,
+                error: action.payload.error
+            };
+        }
+        case 'CONTACT_UPDATE_ERROR': {
+            return {
+                ...state,
+                error: action.payload.error
+            };
+        }
         default: {
             return state;
         }

@@ -6,7 +6,7 @@ const defaultState = {
 
 const reducer = (state = defaultState, action) => {
     switch (action.type) {
-        case 'SET_CONTACT': {
+        case 'GET_CONTACT_DONE': {
             return {
                 contact: {
                     id: action.payload.contact.id

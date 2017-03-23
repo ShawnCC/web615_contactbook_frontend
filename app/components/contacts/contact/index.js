@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 // Import the action(s)
 import { setContact } from './actions';
@@ -38,6 +39,7 @@ class Contact extends React.Component {
         // unfamilair with this syntax
         const { contact, reducer } = this.props;
 
+        const link = `/contacts/${ contact.id }/`;
         let cssClasses = 'list-group-item';
 
         if (contact.id === reducer.contact.id) {
@@ -48,7 +50,7 @@ class Contact extends React.Component {
          * Print out the properties of the contact to the list item
          */
         return (
-            <a href="#" className={ cssClasses } onClick={ this.handleClick }>{ contact.name }</a>
+            <Link to={ link } className={ cssClasses }>{ contact.name }</Link>
         );
     }
 }
