@@ -14,6 +14,22 @@ class Details extends React.Component {
     }
 
     /**
+     * Setup listeners for sockets
+     */
+    initSocketEvents() {
+        const { socketReducer } = this.props;
+        const { socket } = socketReducer;
+
+        socket.on('PUT/api/v1/contacts/:contactId/', (payload) => {
+            const contactId = this.props.match.params.contactId;
+
+            if (payload.contactId.toString() === contactId.toString()) {
+                this.context.store.dispatch(getContact(contactId));
+            }
+        });
+    }
+
+    /**
      * Dispatch action to get the contact
      */
     getContact() {
@@ -32,6 +48,7 @@ class Details extends React.Component {
 
     componentWillMount() {
         this.getContact();
+        this.initSocketEvents();
     }
 
     componentDidUpdate() {
@@ -64,7 +81,8 @@ Details.contextTypes = {
 
 function mapStateToProps(state) {
     return {
-        reducer: state.detailsReducer
+        reducer: state.detailsReducer,
+        socketReducer: state.socketReducer
     };
 }
 

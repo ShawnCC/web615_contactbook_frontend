@@ -13,6 +13,18 @@ class Contacts extends React.Component {
 
         this.getContacts = this.getContacts.bind(this);
     }
+
+    /**
+     * Setup listeners for sockets
+     */
+    initSocketEvents() {
+        const { socketReducer } = this.props;
+        const { socket } = socketReducer;
+
+        socket.on('PUT/api/v1/contacts/:contactId/', ()=> {
+            this.getContacts();
+        });
+    }
     
     /**
      * Dispatch action to get the contacts
@@ -27,6 +39,7 @@ class Contacts extends React.Component {
      */
     componentWillMount() {
         this.getContacts();
+        this.initSocketEvents();
     }
 
     render() {
@@ -67,7 +80,8 @@ Contacts.contextTypes = {
  */
 function mapStateToProps(state) {
     return {
-        reducer: state.contactsReducer
+        reducer: state.contactsReducer,
+        socketReducer: state.socketReducer
     };
 }
 

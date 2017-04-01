@@ -69,8 +69,6 @@ const updateContact = (contact) => {
             contact
         }).then((response) => {
             dispatch(updateContactDone());
-            dispatch(getContact(contact.id));
-            dispatch(getContacts());
         }).catch((error) => {
             dispatch(updateContactError({
                 error: error.response.data.message
