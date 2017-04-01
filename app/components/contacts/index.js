@@ -12,6 +12,7 @@ class Contacts extends React.Component {
         super();
 
         this.getContacts = this.getContacts.bind(this);
+        this.initSocketEvents = this.initSocketEvents.bind(this);
     }
 
     /**

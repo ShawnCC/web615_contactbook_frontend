@@ -11,6 +11,7 @@ class Details extends React.Component {
         super();
 
         this.getContact = this.getContact.bind(this);
+        this.initSocketEvents = this.initSocketEvents.bind(this);
     }
 
     /**
@@ -23,6 +24,9 @@ class Details extends React.Component {
         socket.on('PUT/api/v1/contacts/:contactId/', (payload) => {
             const contactId = this.props.match.params.contactId;
 
+            // We'll directory dispatch the event here instead of calling
+            // this.getContact, since this.getContact has other checks which we
+            // won't be able to pass using sockets
             if (payload.contactId.toString() === contactId.toString()) {
                 this.context.store.dispatch(getContact(contactId));
             }
